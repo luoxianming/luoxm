@@ -1,0 +1,50 @@
+server:
+   port: 8081
+   debug: true
+#spring:
+#   datasource:
+#      url: jdbc:mysql://localhost:3306/crm_base?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+#      username: root
+#      password: 111111
+#      driver-classs-name: com.mysql.jdbc.Driver
+
+spring:
+   datasource:
+      url: jdbc:mysql://106.54.50.70:3306/crm_base?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+      username: root
+      password: 327320
+      driver-classs-name: com.mysql.jdbc.Driver
+
+#   kafka:
+#      bootstrap-servers: localhost:9092
+#      producer:
+#         batch-size: 16384
+#         retries: 3
+#         buffer-memory: 33554432
+#         key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#         value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      consumer:
+#         group-id: mygroup
+#         enable-auto-commit: true
+
+
+mybatis:
+   mapper-locations: classpath:mapper/*Mapper.xml
+   type-aliases-pakage: com.example.mysqldemo.dao
+   configuration:
+      map-underscore-to-camel-case: true
+
+
+redis:
+   host: t.redis.gaodunwangxiao.com
+   port: 6379
+   password: Zjreg9CLterPZyJVFJVW
+   socket-host: ${gaodun/config_center/ace.gaodunwangxiao.com/ACE_CRM_REDIS_HOST}
+   socket-port: ${gaodun/config_center/ace.gaodunwangxiao.com/ACE_CRM_REDIS_PORT}
+   socket-database: ${gaodun/config_center/ace.gaodunwangxiao.com/ACE_CRM_REDIS_DB}
+   socket-password: ${gaodun/config_center/ace.gaodunwangxiao.com/ACE_CRM_REDIS_PASSWORD}
+   database: 5
+   key-prefix: solon.gaodun.com
+   key-prefix-net: "130555_5_"
+
+      

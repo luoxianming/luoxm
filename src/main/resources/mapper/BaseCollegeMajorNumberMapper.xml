@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mysqldemo.dao.BaseCollegeMajorNumberMapper">
+  <resultMap id="BaseResultMap" type="com.example.mysqldemo.bean.BaseCollegeMajorNumber">
+    <!--@mbg.generated-->
+    <!--@Table crm_base.Base_CollegeMajorNumber-->
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="SchoolId" jdbcType="INTEGER" property="schoolid" />
+    <result column="CollegeId" jdbcType="INTEGER" property="collegeid" />
+    <result column="MajorId" jdbcType="INTEGER" property="majorid" />
+    <result column="EnrollmentYear" jdbcType="INTEGER" property="enrollmentyear" />
+    <result column="ClassName" jdbcType="VARCHAR" property="classname" />
+    <result column="Number" jdbcType="INTEGER" property="number" />
+    <result column="IsDelete" jdbcType="INTEGER" property="isdelete" />
+    <result column="CreateTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="CreateBy" jdbcType="INTEGER" property="createby" />
+    <result column="UpdateTime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="UpdateBy" jdbcType="INTEGER" property="updateby" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    Id, SchoolId, CollegeId, MajorId, EnrollmentYear, ClassName, `Number`, IsDelete, 
+    CreateTime, CreateBy, UpdateTime, UpdateBy
+  </sql>
+  <select id="selectByExample" parameterType="com.example.mysqldemo.bean.BaseCollegeMajorNumberExample" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from crm_base.Base_CollegeMajorNumber
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from crm_base.Base_CollegeMajorNumber
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from crm_base.Base_CollegeMajorNumber
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.mysqldemo.bean.BaseCollegeMajorNumberExample">
+    <!--@mbg.generated-->
+    delete from crm_base.Base_CollegeMajorNumber
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="Id" keyProperty="id" parameterType="com.example.mysqldemo.bean.BaseCollegeMajorNumber" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into crm_base.Base_CollegeMajorNumber (Id, SchoolId, CollegeId, MajorId,
+      EnrollmentYear, ClassName, `Number`, 
+      IsDelete, CreateTime, CreateBy, 
+      UpdateTime, UpdateBy)
+    values (#{id,jdbcType=INTEGER}, #{schoolid,jdbcType=INTEGER}, #{collegeid,jdbcType=INTEGER}, #{majorid,jdbcType=INTEGER},
+      #{enrollmentyear,jdbcType=INTEGER}, #{classname,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}, 
+      #{isdelete,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{createby,jdbcType=INTEGER}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{updateby,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="Id" keyProperty="id" parameterType="com.example.mysqldemo.bean.BaseCollegeMajorNumber" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into crm_base.Base_CollegeMajorNumber
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="schoolid != null">
+        SchoolId,
+      </if>
+      <if test="collegeid != null">
+        CollegeId,
+      </if>
+      <if test="majorid != null">
+        MajorId,
+      </if>
+      <if test="enrollmentyear != null">
+        EnrollmentYear,
+      </if>
+      <if test="classname != null">
+        ClassName,
+      </if>
+      <if test="number != null">
+        `Number`,
+      </if>
+      <if test="isdelete != null">
+        IsDelete,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="createby != null">
+        CreateBy,
+      </if>
+      <if test="updatetime != null">
+        UpdateTime,
+      </if>
+      <if test="updateby != null">
+        UpdateBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="schoolid != null">
+        #{schoolid,jdbcType=INTEGER},
+      </if>
+      <if test="collegeid != null">
+        #{collegeid,jdbcType=INTEGER},
+      </if>
+      <if test="majorid != null">
+        #{majorid,jdbcType=INTEGER},
+      </if>
+      <if test="enrollmentyear != null">
+        #{enrollmentyear,jdbcType=INTEGER},
+      </if>
+      <if test="classname != null">
+        #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null">
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null">
+        #{createby,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        #{updateby,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.mysqldemo.bean.BaseCollegeMajorNumberExample" resultType="java.lang.Long">
+    <!--@mbg.generated-->
+    select count(*) from crm_base.Base_CollegeMajorNumber
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--@mbg.generated-->
+    update crm_base.Base_CollegeMajorNumber
+    <set>
+      <if test="record.id != null">
+        Id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.schoolid != null">
+        SchoolId = #{record.schoolid,jdbcType=INTEGER},
+      </if>
+      <if test="record.collegeid != null">
+        CollegeId = #{record.collegeid,jdbcType=INTEGER},
+      </if>
+      <if test="record.majorid != null">
+        MajorId = #{record.majorid,jdbcType=INTEGER},
+      </if>
+      <if test="record.enrollmentyear != null">
+        EnrollmentYear = #{record.enrollmentyear,jdbcType=INTEGER},
+      </if>
+      <if test="record.classname != null">
+        ClassName = #{record.classname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.number != null">
+        `Number` = #{record.number,jdbcType=INTEGER},
+      </if>
+      <if test="record.isdelete != null">
+        IsDelete = #{record.isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="record.createtime != null">
+        CreateTime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null">
+        CreateBy = #{record.createby,jdbcType=INTEGER},
+      </if>
+      <if test="record.updatetime != null">
+        UpdateTime = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateby != null">
+        UpdateBy = #{record.updateby,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--@mbg.generated-->
+    update crm_base.Base_CollegeMajorNumber
+    set Id = #{record.id,jdbcType=INTEGER},
+      SchoolId = #{record.schoolid,jdbcType=INTEGER},
+      CollegeId = #{record.collegeid,jdbcType=INTEGER},
+      MajorId = #{record.majorid,jdbcType=INTEGER},
+      EnrollmentYear = #{record.enrollmentyear,jdbcType=INTEGER},
+      ClassName = #{record.classname,jdbcType=VARCHAR},
+      `Number` = #{record.number,jdbcType=INTEGER},
+      IsDelete = #{record.isdelete,jdbcType=INTEGER},
+      CreateTime = #{record.createtime,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=INTEGER},
+      UpdateTime = #{record.updatetime,jdbcType=TIMESTAMP},
+      UpdateBy = #{record.updateby,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.mysqldemo.bean.BaseCollegeMajorNumber">
+    <!--@mbg.generated-->
+    update crm_base.Base_CollegeMajorNumber
+    <set>
+      <if test="schoolid != null">
+        SchoolId = #{schoolid,jdbcType=INTEGER},
+      </if>
+      <if test="collegeid != null">
+        CollegeId = #{collegeid,jdbcType=INTEGER},
+      </if>
+      <if test="majorid != null">
+        MajorId = #{majorid,jdbcType=INTEGER},
+      </if>
+      <if test="enrollmentyear != null">
+        EnrollmentYear = #{enrollmentyear,jdbcType=INTEGER},
+      </if>
+      <if test="classname != null">
+        ClassName = #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        `Number` = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null">
+        IsDelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null">
+        CreateBy = #{createby,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null">
+        UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        UpdateBy = #{updateby,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.mysqldemo.bean.BaseCollegeMajorNumber">
+    <!--@mbg.generated-->
+    update crm_base.Base_CollegeMajorNumber
+    set SchoolId = #{schoolid,jdbcType=INTEGER},
+      CollegeId = #{collegeid,jdbcType=INTEGER},
+      MajorId = #{majorid,jdbcType=INTEGER},
+      EnrollmentYear = #{enrollmentyear,jdbcType=INTEGER},
+      ClassName = #{classname,jdbcType=VARCHAR},
+      `Number` = #{number,jdbcType=INTEGER},
+      IsDelete = #{isdelete,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=INTEGER},
+      UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+      UpdateBy = #{updateby,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update crm_base.Base_CollegeMajorNumber
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="SchoolId = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=INTEGER} then #{item.schoolid,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="CollegeId = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=INTEGER} then #{item.collegeid,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="MajorId = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=INTEGER} then #{item.majorid,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="EnrollmentYear = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=INTEGER} then #{item.enrollmentyear,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="ClassName = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=INTEGER} then #{item.classname,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`Number` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=INTEGER} then #{item.number,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="IsDelete = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=INTEGER} then #{item.isdelete,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="CreateTime = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=INTEGER} then #{item.createtime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="CreateBy = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=INTEGER} then #{item.createby,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="UpdateTime = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=INTEGER} then #{item.updatetime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="UpdateBy = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=INTEGER} then #{item.updateby,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+    </trim>
+    where Id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update crm_base.Base_CollegeMajorNumber
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="SchoolId = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.schoolid != null">
+            when Id = #{item.id,jdbcType=INTEGER} then #{item.schoolid,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="CollegeId = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.collegeid != null">
+            when Id = #{item.id,jdbcType=INTEGER} then #{item.collegeid,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="MajorId = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.majorid != null">
+            when Id = #{item.id,jdbcType=INTEGER} then #{item.majorid,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="EnrollmentYear = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.enrollmentyear != null">
+            when Id = #{item.id,jdbcType=INTEGER} then #{item.enrollmentyear,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="ClassName = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.classname != null">
+            when Id = #{item.id,jdbcType=INTEGER} then #{item.classname,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`Number` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.number != null">
+            when Id = #{item.id,jdbcType=INTEGER} then #{item.number,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="IsDelete = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.isdelete != null">
+            when Id = #{item.id,jdbcType=INTEGER} then #{item.isdelete,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="CreateTime = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createtime != null">
+            when Id = #{item.id,jdbcType=INTEGER} then #{item.createtime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="CreateBy = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createby != null">
+            when Id = #{item.id,jdbcType=INTEGER} then #{item.createby,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="UpdateTime = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updatetime != null">
+            when Id = #{item.id,jdbcType=INTEGER} then #{item.updatetime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="UpdateBy = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updateby != null">
+            when Id = #{item.id,jdbcType=INTEGER} then #{item.updateby,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where Id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="Id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into crm_base.Base_CollegeMajorNumber
+    (SchoolId, CollegeId, MajorId, EnrollmentYear, ClassName, `Number`, IsDelete, CreateTime, 
+      CreateBy, UpdateTime, UpdateBy)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.schoolid,jdbcType=INTEGER}, #{item.collegeid,jdbcType=INTEGER}, #{item.majorid,jdbcType=INTEGER}, 
+        #{item.enrollmentyear,jdbcType=INTEGER}, #{item.classname,jdbcType=VARCHAR}, #{item.number,jdbcType=INTEGER}, 
+        #{item.isdelete,jdbcType=INTEGER}, #{item.createtime,jdbcType=TIMESTAMP}, #{item.createby,jdbcType=INTEGER}, 
+        #{item.updatetime,jdbcType=TIMESTAMP}, #{item.updateby,jdbcType=INTEGER})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="Id" keyProperty="id" parameterType="com.example.mysqldemo.bean.BaseCollegeMajorNumber" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into crm_base.Base_CollegeMajorNumber
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      SchoolId,
+      CollegeId,
+      MajorId,
+      EnrollmentYear,
+      ClassName,
+      `Number`,
+      IsDelete,
+      CreateTime,
+      CreateBy,
+      UpdateTime,
+      UpdateBy,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      #{schoolid,jdbcType=INTEGER},
+      #{collegeid,jdbcType=INTEGER},
+      #{majorid,jdbcType=INTEGER},
+      #{enrollmentyear,jdbcType=INTEGER},
+      #{classname,jdbcType=VARCHAR},
+      #{number,jdbcType=INTEGER},
+      #{isdelete,jdbcType=INTEGER},
+      #{createtime,jdbcType=TIMESTAMP},
+      #{createby,jdbcType=INTEGER},
+      #{updatetime,jdbcType=TIMESTAMP},
+      #{updateby,jdbcType=INTEGER},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        Id = #{id,jdbcType=INTEGER},
+      </if>
+      SchoolId = #{schoolid,jdbcType=INTEGER},
+      CollegeId = #{collegeid,jdbcType=INTEGER},
+      MajorId = #{majorid,jdbcType=INTEGER},
+      EnrollmentYear = #{enrollmentyear,jdbcType=INTEGER},
+      ClassName = #{classname,jdbcType=VARCHAR},
+      `Number` = #{number,jdbcType=INTEGER},
+      IsDelete = #{isdelete,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=INTEGER},
+      UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+      UpdateBy = #{updateby,jdbcType=INTEGER},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="Id" keyProperty="id" parameterType="com.example.mysqldemo.bean.BaseCollegeMajorNumber" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into crm_base.Base_CollegeMajorNumber
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="schoolid != null">
+        SchoolId,
+      </if>
+      <if test="collegeid != null">
+        CollegeId,
+      </if>
+      <if test="majorid != null">
+        MajorId,
+      </if>
+      <if test="enrollmentyear != null">
+        EnrollmentYear,
+      </if>
+      <if test="classname != null">
+        ClassName,
+      </if>
+      <if test="number != null">
+        `Number`,
+      </if>
+      <if test="isdelete != null">
+        IsDelete,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="createby != null">
+        CreateBy,
+      </if>
+      <if test="updatetime != null">
+        UpdateTime,
+      </if>
+      <if test="updateby != null">
+        UpdateBy,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="schoolid != null">
+        #{schoolid,jdbcType=INTEGER},
+      </if>
+      <if test="collegeid != null">
+        #{collegeid,jdbcType=INTEGER},
+      </if>
+      <if test="majorid != null">
+        #{majorid,jdbcType=INTEGER},
+      </if>
+      <if test="enrollmentyear != null">
+        #{enrollmentyear,jdbcType=INTEGER},
+      </if>
+      <if test="classname != null">
+        #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null">
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null">
+        #{createby,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        #{updateby,jdbcType=INTEGER},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        Id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="schoolid != null">
+        SchoolId = #{schoolid,jdbcType=INTEGER},
+      </if>
+      <if test="collegeid != null">
+        CollegeId = #{collegeid,jdbcType=INTEGER},
+      </if>
+      <if test="majorid != null">
+        MajorId = #{majorid,jdbcType=INTEGER},
+      </if>
+      <if test="enrollmentyear != null">
+        EnrollmentYear = #{enrollmentyear,jdbcType=INTEGER},
+      </if>
+      <if test="classname != null">
+        ClassName = #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        `Number` = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null">
+        IsDelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null">
+        CreateBy = #{createby,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null">
+        UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        UpdateBy = #{updateby,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

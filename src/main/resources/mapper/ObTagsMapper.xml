@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mysqldemo.dao.ObTagsMapper">
+  <resultMap id="BaseResultMap" type="com.example.mysqldemo.bean.ObTags">
+    <!--@mbg.generated-->
+    <!--@Table ocrm_basic.ob_tags-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="code" jdbcType="INTEGER" property="code" />
+    <result column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="owner_id" jdbcType="INTEGER" property="ownerId" />
+    <result column="suport_query" jdbcType="TINYINT" property="suportQuery" />
+    <result column="single_choice" jdbcType="TINYINT" property="singleChoice" />
+    <result column="data_sources" jdbcType="TINYINT" property="dataSources" />
+    <result column="select_field" jdbcType="TINYINT" property="selectField" />
+    <result column="level" jdbcType="TINYINT" property="level" />
+    <result column="created_by" jdbcType="INTEGER" property="createdBy" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_by" jdbcType="INTEGER" property="updatedBy" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, code, type_id, `name`, sort, owner_id, suport_query, single_choice, data_sources, 
+    select_field, `level`, created_by, created_at, updated_by, updated_at, is_deleted
+  </sql>
+  <select id="selectByExample" parameterType="com.example.mysqldemo.bean.ObTagsExample" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ocrm_basic.ob_tags
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from ocrm_basic.ob_tags
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from ocrm_basic.ob_tags
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.mysqldemo.bean.ObTagsExample">
+    <!--@mbg.generated-->
+    delete from ocrm_basic.ob_tags
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.mysqldemo.bean.ObTags" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into ocrm_basic.ob_tags (code, type_id, `name`, 
+      sort, owner_id, suport_query, 
+      single_choice, data_sources, select_field, 
+      `level`, created_by, created_at, 
+      updated_by, updated_at, is_deleted
+      )
+    values (#{code,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{sort,jdbcType=INTEGER}, #{ownerId,jdbcType=INTEGER}, #{suportQuery,jdbcType=TINYINT}, 
+      #{singleChoice,jdbcType=TINYINT}, #{dataSources,jdbcType=TINYINT}, #{selectField,jdbcType=TINYINT}, 
+      #{level,jdbcType=TINYINT}, #{createdBy,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedBy,jdbcType=INTEGER}, #{updatedAt,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.mysqldemo.bean.ObTags" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into ocrm_basic.ob_tags
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="code != null">
+        code,
+      </if>
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="ownerId != null">
+        owner_id,
+      </if>
+      <if test="suportQuery != null">
+        suport_query,
+      </if>
+      <if test="singleChoice != null">
+        single_choice,
+      </if>
+      <if test="dataSources != null">
+        data_sources,
+      </if>
+      <if test="selectField != null">
+        select_field,
+      </if>
+      <if test="level != null">
+        `level`,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedBy != null">
+        updated_by,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="code != null">
+        #{code,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null">
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="ownerId != null">
+        #{ownerId,jdbcType=INTEGER},
+      </if>
+      <if test="suportQuery != null">
+        #{suportQuery,jdbcType=TINYINT},
+      </if>
+      <if test="singleChoice != null">
+        #{singleChoice,jdbcType=TINYINT},
+      </if>
+      <if test="dataSources != null">
+        #{dataSources,jdbcType=TINYINT},
+      </if>
+      <if test="selectField != null">
+        #{selectField,jdbcType=TINYINT},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=TINYINT},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.mysqldemo.bean.ObTagsExample" resultType="java.lang.Long">
+    <!--@mbg.generated-->
+    select count(*) from ocrm_basic.ob_tags
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--@mbg.generated-->
+    update ocrm_basic.ob_tags
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.code != null">
+        code = #{record.code,jdbcType=INTEGER},
+      </if>
+      <if test="record.typeId != null">
+        type_id = #{record.typeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        `name` = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sort != null">
+        sort = #{record.sort,jdbcType=INTEGER},
+      </if>
+      <if test="record.ownerId != null">
+        owner_id = #{record.ownerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.suportQuery != null">
+        suport_query = #{record.suportQuery,jdbcType=TINYINT},
+      </if>
+      <if test="record.singleChoice != null">
+        single_choice = #{record.singleChoice,jdbcType=TINYINT},
+      </if>
+      <if test="record.dataSources != null">
+        data_sources = #{record.dataSources,jdbcType=TINYINT},
+      </if>
+      <if test="record.selectField != null">
+        select_field = #{record.selectField,jdbcType=TINYINT},
+      </if>
+      <if test="record.level != null">
+        `level` = #{record.level,jdbcType=TINYINT},
+      </if>
+      <if test="record.createdBy != null">
+        created_by = #{record.createdBy,jdbcType=INTEGER},
+      </if>
+      <if test="record.createdAt != null">
+        created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedBy != null">
+        updated_by = #{record.updatedBy,jdbcType=INTEGER},
+      </if>
+      <if test="record.updatedAt != null">
+        updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isDeleted != null">
+        is_deleted = #{record.isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--@mbg.generated-->
+    update ocrm_basic.ob_tags
+    set id = #{record.id,jdbcType=INTEGER},
+      code = #{record.code,jdbcType=INTEGER},
+      type_id = #{record.typeId,jdbcType=INTEGER},
+      `name` = #{record.name,jdbcType=VARCHAR},
+      sort = #{record.sort,jdbcType=INTEGER},
+      owner_id = #{record.ownerId,jdbcType=INTEGER},
+      suport_query = #{record.suportQuery,jdbcType=TINYINT},
+      single_choice = #{record.singleChoice,jdbcType=TINYINT},
+      data_sources = #{record.dataSources,jdbcType=TINYINT},
+      select_field = #{record.selectField,jdbcType=TINYINT},
+      `level` = #{record.level,jdbcType=TINYINT},
+      created_by = #{record.createdBy,jdbcType=INTEGER},
+      created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      updated_by = #{record.updatedBy,jdbcType=INTEGER},
+      updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
+      is_deleted = #{record.isDeleted,jdbcType=TINYINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.mysqldemo.bean.ObTags">
+    <!--@mbg.generated-->
+    update ocrm_basic.ob_tags
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="ownerId != null">
+        owner_id = #{ownerId,jdbcType=INTEGER},
+      </if>
+      <if test="suportQuery != null">
+        suport_query = #{suportQuery,jdbcType=TINYINT},
+      </if>
+      <if test="singleChoice != null">
+        single_choice = #{singleChoice,jdbcType=TINYINT},
+      </if>
+      <if test="dataSources != null">
+        data_sources = #{dataSources,jdbcType=TINYINT},
+      </if>
+      <if test="selectField != null">
+        select_field = #{selectField,jdbcType=TINYINT},
+      </if>
+      <if test="level != null">
+        `level` = #{level,jdbcType=TINYINT},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        updated_by = #{updatedBy,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.mysqldemo.bean.ObTags">
+    <!--@mbg.generated-->
+    update ocrm_basic.ob_tags
+    set code = #{code,jdbcType=INTEGER},
+      type_id = #{typeId,jdbcType=INTEGER},
+      `name` = #{name,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      owner_id = #{ownerId,jdbcType=INTEGER},
+      suport_query = #{suportQuery,jdbcType=TINYINT},
+      single_choice = #{singleChoice,jdbcType=TINYINT},
+      data_sources = #{dataSources,jdbcType=TINYINT},
+      select_field = #{selectField,jdbcType=TINYINT},
+      `level` = #{level,jdbcType=TINYINT},
+      created_by = #{createdBy,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=INTEGER},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

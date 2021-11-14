@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mysqldemo.dao.BaseCollegeMapper">
+  <resultMap id="BaseResultMap" type="com.example.mysqldemo.bean.BaseCollege">
+    <!--@mbg.generated-->
+    <!--@Table crm_base.Base_College-->
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="SchoolId" jdbcType="INTEGER" property="schoolid" />
+    <result column="IsDelete" jdbcType="INTEGER" property="isdelete" />
+    <result column="CreateTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="CreateBy" jdbcType="INTEGER" property="createby" />
+    <result column="UpdateTime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="UpdateBy" jdbcType="INTEGER" property="updateby" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    Id, `Name`, SchoolId, IsDelete, CreateTime, CreateBy, UpdateTime, UpdateBy
+  </sql>
+  <select id="selectByExample" parameterType="com.example.mysqldemo.bean.BaseCollegeExample" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from crm_base.Base_College
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from crm_base.Base_College
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from crm_base.Base_College
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.mysqldemo.bean.BaseCollegeExample">
+    <!--@mbg.generated-->
+    delete from crm_base.Base_College
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="Id" keyProperty="id" parameterType="com.example.mysqldemo.bean.BaseCollege" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into crm_base.Base_College (id, `Name`, SchoolId, IsDelete,
+      CreateTime, CreateBy, UpdateTime, 
+      UpdateBy)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{schoolid,jdbcType=INTEGER}, #{isdelete,jdbcType=INTEGER},
+      #{createtime,jdbcType=TIMESTAMP}, #{createby,jdbcType=INTEGER}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{updateby,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="Id" keyProperty="id" parameterType="com.example.mysqldemo.bean.BaseCollege" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into crm_base.Base_College
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `Name`,
+      </if>
+      <if test="schoolid != null">
+        SchoolId,
+      </if>
+      <if test="isdelete != null">
+        IsDelete,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="createby != null">
+        CreateBy,
+      </if>
+      <if test="updatetime != null">
+        UpdateTime,
+      </if>
+      <if test="updateby != null">
+        UpdateBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolid != null">
+        #{schoolid,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null">
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null">
+        #{createby,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        #{updateby,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.mysqldemo.bean.BaseCollegeExample" resultType="java.lang.Long">
+    <!--@mbg.generated-->
+    select count(*) from crm_base.Base_College
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--@mbg.generated-->
+    update crm_base.Base_College
+    <set>
+      <if test="record.id != null">
+        Id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        `Name` = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.schoolid != null">
+        SchoolId = #{record.schoolid,jdbcType=INTEGER},
+      </if>
+      <if test="record.isdelete != null">
+        IsDelete = #{record.isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="record.createtime != null">
+        CreateTime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null">
+        CreateBy = #{record.createby,jdbcType=INTEGER},
+      </if>
+      <if test="record.updatetime != null">
+        UpdateTime = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateby != null">
+        UpdateBy = #{record.updateby,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--@mbg.generated-->
+    update crm_base.Base_College
+    set Id = #{record.id,jdbcType=INTEGER},
+      `Name` = #{record.name,jdbcType=VARCHAR},
+      SchoolId = #{record.schoolid,jdbcType=INTEGER},
+      IsDelete = #{record.isdelete,jdbcType=INTEGER},
+      CreateTime = #{record.createtime,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=INTEGER},
+      UpdateTime = #{record.updatetime,jdbcType=TIMESTAMP},
+      UpdateBy = #{record.updateby,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.mysqldemo.bean.BaseCollege">
+    <!--@mbg.generated-->
+    update crm_base.Base_College
+    <set>
+      <if test="name != null">
+        `Name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolid != null">
+        SchoolId = #{schoolid,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null">
+        IsDelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null">
+        CreateBy = #{createby,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null">
+        UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        UpdateBy = #{updateby,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.mysqldemo.bean.BaseCollege">
+    <!--@mbg.generated-->
+    update crm_base.Base_College
+    set `Name` = #{name,jdbcType=VARCHAR},
+      SchoolId = #{schoolid,jdbcType=INTEGER},
+      IsDelete = #{isdelete,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=INTEGER},
+      UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+      UpdateBy = #{updateby,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update crm_base.Base_College
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="`Name` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=INTEGER} then #{item.name,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="SchoolId = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=INTEGER} then #{item.schoolid,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="IsDelete = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=INTEGER} then #{item.isdelete,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="CreateTime = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=INTEGER} then #{item.createtime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="CreateBy = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=INTEGER} then #{item.createby,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="UpdateTime = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=INTEGER} then #{item.updatetime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="UpdateBy = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=INTEGER} then #{item.updateby,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+    </trim>
+    where Id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update crm_base.Base_College
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="`Name` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.name != null">
+            when Id = #{item.id,jdbcType=INTEGER} then #{item.name,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="SchoolId = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.schoolid != null">
+            when Id = #{item.id,jdbcType=INTEGER} then #{item.schoolid,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="IsDelete = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.isdelete != null">
+            when Id = #{item.id,jdbcType=INTEGER} then #{item.isdelete,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="CreateTime = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createtime != null">
+            when Id = #{item.id,jdbcType=INTEGER} then #{item.createtime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="CreateBy = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createby != null">
+            when Id = #{item.id,jdbcType=INTEGER} then #{item.createby,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="UpdateTime = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updatetime != null">
+            when Id = #{item.id,jdbcType=INTEGER} then #{item.updatetime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="UpdateBy = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updateby != null">
+            when Id = #{item.id,jdbcType=INTEGER} then #{item.updateby,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where Id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="Id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into crm_base.Base_College
+    (`Name`, SchoolId, IsDelete, CreateTime, CreateBy, UpdateTime, UpdateBy)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.name,jdbcType=VARCHAR}, #{item.schoolid,jdbcType=INTEGER}, #{item.isdelete,jdbcType=INTEGER}, 
+        #{item.createtime,jdbcType=TIMESTAMP}, #{item.createby,jdbcType=INTEGER}, #{item.updatetime,jdbcType=TIMESTAMP}, 
+        #{item.updateby,jdbcType=INTEGER})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="Id" keyProperty="id" parameterType="com.example.mysqldemo.bean.BaseCollege" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into crm_base.Base_College
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      `Name`,
+      SchoolId,
+      IsDelete,
+      CreateTime,
+      CreateBy,
+      UpdateTime,
+      UpdateBy,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      #{name,jdbcType=VARCHAR},
+      #{schoolid,jdbcType=INTEGER},
+      #{isdelete,jdbcType=INTEGER},
+      #{createtime,jdbcType=TIMESTAMP},
+      #{createby,jdbcType=INTEGER},
+      #{updatetime,jdbcType=TIMESTAMP},
+      #{updateby,jdbcType=INTEGER},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        Id = #{id,jdbcType=INTEGER},
+      </if>
+      `Name` = #{name,jdbcType=VARCHAR},
+      SchoolId = #{schoolid,jdbcType=INTEGER},
+      IsDelete = #{isdelete,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=INTEGER},
+      UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+      UpdateBy = #{updateby,jdbcType=INTEGER},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="Id" keyProperty="id" parameterType="com.example.mysqldemo.bean.BaseCollege" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into crm_base.Base_College
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="name != null">
+        `Name`,
+      </if>
+      <if test="schoolid != null">
+        SchoolId,
+      </if>
+      <if test="isdelete != null">
+        IsDelete,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="createby != null">
+        CreateBy,
+      </if>
+      <if test="updatetime != null">
+        UpdateTime,
+      </if>
+      <if test="updateby != null">
+        UpdateBy,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolid != null">
+        #{schoolid,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null">
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null">
+        #{createby,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        #{updateby,jdbcType=INTEGER},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        Id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        `Name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolid != null">
+        SchoolId = #{schoolid,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null">
+        IsDelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null">
+        CreateBy = #{createby,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null">
+        UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        UpdateBy = #{updateby,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

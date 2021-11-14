@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mysqldemo.dao.ObTagsValueMapper">
+  <resultMap id="BaseResultMap" type="com.example.mysqldemo.bean.ObTagsValue">
+    <!--@mbg.generated-->
+    <!--@Table ocrm_basic.ob_tags_value-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="tags_id" jdbcType="INTEGER" property="tagsId" />
+    <result column="tags_value_code" jdbcType="INTEGER" property="tagsValueCode" />
+    <result column="tags_value_name" jdbcType="VARCHAR" property="tagsValueName" />
+    <result column="object_id" jdbcType="INTEGER" property="objectId" />
+    <result column="created_by" jdbcType="INTEGER" property="createdBy" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_by" jdbcType="INTEGER" property="updatedBy" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="deleted_by" jdbcType="INTEGER" property="deletedBy" />
+    <result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, tags_id, tags_value_code, tags_value_name, object_id, created_by, created_at, 
+    updated_by, updated_at, is_deleted, deleted_by, deleted_at
+  </sql>
+  <select id="selectByExample" parameterType="com.example.mysqldemo.bean.ObTagsValueExample" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ocrm_basic.ob_tags_value
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from ocrm_basic.ob_tags_value
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from ocrm_basic.ob_tags_value
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.mysqldemo.bean.ObTagsValueExample">
+    <!--@mbg.generated-->
+    delete from ocrm_basic.ob_tags_value
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.mysqldemo.bean.ObTagsValue" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into ocrm_basic.ob_tags_value (tags_id, tags_value_code, tags_value_name, 
+      object_id, created_by, created_at, 
+      updated_by, updated_at, is_deleted, 
+      deleted_by, deleted_at)
+    values (#{tagsId,jdbcType=INTEGER}, #{tagsValueCode,jdbcType=INTEGER}, #{tagsValueName,jdbcType=VARCHAR}, 
+      #{objectId,jdbcType=INTEGER}, #{createdBy,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedBy,jdbcType=INTEGER}, #{updatedAt,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=TINYINT}, 
+      #{deletedBy,jdbcType=INTEGER}, #{deletedAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.mysqldemo.bean.ObTagsValue" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into ocrm_basic.ob_tags_value
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tagsId != null">
+        tags_id,
+      </if>
+      <if test="tagsValueCode != null">
+        tags_value_code,
+      </if>
+      <if test="tagsValueName != null">
+        tags_value_name,
+      </if>
+      <if test="objectId != null">
+        object_id,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedBy != null">
+        updated_by,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="deletedBy != null">
+        deleted_by,
+      </if>
+      <if test="deletedAt != null">
+        deleted_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tagsId != null">
+        #{tagsId,jdbcType=INTEGER},
+      </if>
+      <if test="tagsValueCode != null">
+        #{tagsValueCode,jdbcType=INTEGER},
+      </if>
+      <if test="tagsValueName != null">
+        #{tagsValueName,jdbcType=VARCHAR},
+      </if>
+      <if test="objectId != null">
+        #{objectId,jdbcType=INTEGER},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="deletedBy != null">
+        #{deletedBy,jdbcType=INTEGER},
+      </if>
+      <if test="deletedAt != null">
+        #{deletedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.mysqldemo.bean.ObTagsValueExample" resultType="java.lang.Long">
+    <!--@mbg.generated-->
+    select count(*) from ocrm_basic.ob_tags_value
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--@mbg.generated-->
+    update ocrm_basic.ob_tags_value
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.tagsId != null">
+        tags_id = #{record.tagsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.tagsValueCode != null">
+        tags_value_code = #{record.tagsValueCode,jdbcType=INTEGER},
+      </if>
+      <if test="record.tagsValueName != null">
+        tags_value_name = #{record.tagsValueName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.objectId != null">
+        object_id = #{record.objectId,jdbcType=INTEGER},
+      </if>
+      <if test="record.createdBy != null">
+        created_by = #{record.createdBy,jdbcType=INTEGER},
+      </if>
+      <if test="record.createdAt != null">
+        created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedBy != null">
+        updated_by = #{record.updatedBy,jdbcType=INTEGER},
+      </if>
+      <if test="record.updatedAt != null">
+        updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isDeleted != null">
+        is_deleted = #{record.isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="record.deletedBy != null">
+        deleted_by = #{record.deletedBy,jdbcType=INTEGER},
+      </if>
+      <if test="record.deletedAt != null">
+        deleted_at = #{record.deletedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--@mbg.generated-->
+    update ocrm_basic.ob_tags_value
+    set id = #{record.id,jdbcType=INTEGER},
+      tags_id = #{record.tagsId,jdbcType=INTEGER},
+      tags_value_code = #{record.tagsValueCode,jdbcType=INTEGER},
+      tags_value_name = #{record.tagsValueName,jdbcType=VARCHAR},
+      object_id = #{record.objectId,jdbcType=INTEGER},
+      created_by = #{record.createdBy,jdbcType=INTEGER},
+      created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      updated_by = #{record.updatedBy,jdbcType=INTEGER},
+      updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
+      is_deleted = #{record.isDeleted,jdbcType=TINYINT},
+      deleted_by = #{record.deletedBy,jdbcType=INTEGER},
+      deleted_at = #{record.deletedAt,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.mysqldemo.bean.ObTagsValue">
+    <!--@mbg.generated-->
+    update ocrm_basic.ob_tags_value
+    <set>
+      <if test="tagsId != null">
+        tags_id = #{tagsId,jdbcType=INTEGER},
+      </if>
+      <if test="tagsValueCode != null">
+        tags_value_code = #{tagsValueCode,jdbcType=INTEGER},
+      </if>
+      <if test="tagsValueName != null">
+        tags_value_name = #{tagsValueName,jdbcType=VARCHAR},
+      </if>
+      <if test="objectId != null">
+        object_id = #{objectId,jdbcType=INTEGER},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        updated_by = #{updatedBy,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="deletedBy != null">
+        deleted_by = #{deletedBy,jdbcType=INTEGER},
+      </if>
+      <if test="deletedAt != null">
+        deleted_at = #{deletedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.mysqldemo.bean.ObTagsValue">
+    <!--@mbg.generated-->
+    update ocrm_basic.ob_tags_value
+    set tags_id = #{tagsId,jdbcType=INTEGER},
+      tags_value_code = #{tagsValueCode,jdbcType=INTEGER},
+      tags_value_name = #{tagsValueName,jdbcType=VARCHAR},
+      object_id = #{objectId,jdbcType=INTEGER},
+      created_by = #{createdBy,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=INTEGER},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      deleted_by = #{deletedBy,jdbcType=INTEGER},
+      deleted_at = #{deletedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update ocrm_basic.ob_tags_value
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="tags_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.tagsId,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="tags_value_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.tagsValueCode,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="tags_value_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.tagsValueName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="object_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.objectId,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="created_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.createdBy,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="created_at = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.createdAt,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="updated_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.updatedBy,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="updated_at = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.updatedAt,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="is_deleted = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.isDeleted,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="deleted_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.deletedBy,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="deleted_at = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.deletedAt,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update ocrm_basic.ob_tags_value
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="tags_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.tagsId != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.tagsId,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="tags_value_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.tagsValueCode != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.tagsValueCode,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="tags_value_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.tagsValueName != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.tagsValueName,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="object_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.objectId != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.objectId,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createdBy != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.createdBy,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_at = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createdAt != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.createdAt,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updatedBy != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.updatedBy,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_at = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updatedAt != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.updatedAt,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="is_deleted = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.isDeleted != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.isDeleted,jdbcType=TINYINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="deleted_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.deletedBy != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.deletedBy,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="deleted_at = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.deletedAt != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.deletedAt,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into ocrm_basic.ob_tags_value
+    (tags_id, tags_value_code, tags_value_name, object_id, created_by, created_at, updated_by, 
+      updated_at, is_deleted, deleted_by, deleted_at)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.tagsId,jdbcType=INTEGER}, #{item.tagsValueCode,jdbcType=INTEGER}, #{item.tagsValueName,jdbcType=VARCHAR}, 
+        #{item.objectId,jdbcType=INTEGER}, #{item.createdBy,jdbcType=INTEGER}, #{item.createdAt,jdbcType=TIMESTAMP}, 
+        #{item.updatedBy,jdbcType=INTEGER}, #{item.updatedAt,jdbcType=TIMESTAMP}, #{item.isDeleted,jdbcType=TINYINT}, 
+        #{item.deletedBy,jdbcType=INTEGER}, #{item.deletedAt,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.example.mysqldemo.bean.ObTagsValue" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into ocrm_basic.ob_tags_value
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      tags_id,
+      tags_value_code,
+      tags_value_name,
+      object_id,
+      created_by,
+      created_at,
+      updated_by,
+      updated_at,
+      is_deleted,
+      deleted_by,
+      deleted_at,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      #{tagsId,jdbcType=INTEGER},
+      #{tagsValueCode,jdbcType=INTEGER},
+      #{tagsValueName,jdbcType=VARCHAR},
+      #{objectId,jdbcType=INTEGER},
+      #{createdBy,jdbcType=INTEGER},
+      #{createdAt,jdbcType=TIMESTAMP},
+      #{updatedBy,jdbcType=INTEGER},
+      #{updatedAt,jdbcType=TIMESTAMP},
+      #{isDeleted,jdbcType=TINYINT},
+      #{deletedBy,jdbcType=INTEGER},
+      #{deletedAt,jdbcType=TIMESTAMP},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      tags_id = #{tagsId,jdbcType=INTEGER},
+      tags_value_code = #{tagsValueCode,jdbcType=INTEGER},
+      tags_value_name = #{tagsValueName,jdbcType=VARCHAR},
+      object_id = #{objectId,jdbcType=INTEGER},
+      created_by = #{createdBy,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=INTEGER},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      deleted_by = #{deletedBy,jdbcType=INTEGER},
+      deleted_at = #{deletedAt,jdbcType=TIMESTAMP},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.example.mysqldemo.bean.ObTagsValue" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into ocrm_basic.ob_tags_value
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="tagsId != null">
+        tags_id,
+      </if>
+      <if test="tagsValueCode != null">
+        tags_value_code,
+      </if>
+      <if test="tagsValueName != null">
+        tags_value_name,
+      </if>
+      <if test="objectId != null">
+        object_id,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedBy != null">
+        updated_by,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="deletedBy != null">
+        deleted_by,
+      </if>
+      <if test="deletedAt != null">
+        deleted_at,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tagsId != null">
+        #{tagsId,jdbcType=INTEGER},
+      </if>
+      <if test="tagsValueCode != null">
+        #{tagsValueCode,jdbcType=INTEGER},
+      </if>
+      <if test="tagsValueName != null">
+        #{tagsValueName,jdbcType=VARCHAR},
+      </if>
+      <if test="objectId != null">
+        #{objectId,jdbcType=INTEGER},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="deletedBy != null">
+        #{deletedBy,jdbcType=INTEGER},
+      </if>
+      <if test="deletedAt != null">
+        #{deletedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tagsId != null">
+        tags_id = #{tagsId,jdbcType=INTEGER},
+      </if>
+      <if test="tagsValueCode != null">
+        tags_value_code = #{tagsValueCode,jdbcType=INTEGER},
+      </if>
+      <if test="tagsValueName != null">
+        tags_value_name = #{tagsValueName,jdbcType=VARCHAR},
+      </if>
+      <if test="objectId != null">
+        object_id = #{objectId,jdbcType=INTEGER},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        updated_by = #{updatedBy,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="deletedBy != null">
+        deleted_by = #{deletedBy,jdbcType=INTEGER},
+      </if>
+      <if test="deletedAt != null">
+        deleted_at = #{deletedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

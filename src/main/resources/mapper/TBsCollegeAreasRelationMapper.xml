@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mysqldemo.dao.TBsCollegeAreasRelationMapper">
+  <resultMap id="BaseResultMap" type="com.example.mysqldemo.bean.TBsCollegeAreasRelation">
+    <!--@mbg.generated-->
+    <!--@Table crm_base.t_bs_college_areas_relation-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="identity_guid" jdbcType="VARCHAR" property="identityGuid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="bs_college_areas_id" jdbcType="INTEGER" property="bsCollegeAreasId" />
+    <result column="bs_college_areas_name" jdbcType="VARCHAR" property="bsCollegeAreasName" />
+    <result column="is_deleted" jdbcType="BOOLEAN" property="isDeleted" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, identity_guid, `name`, bs_college_areas_id, bs_college_areas_name, is_deleted, 
+    created_at, updated_at
+  </sql>
+  <select id="selectByExample" parameterType="com.example.mysqldemo.bean.TBsCollegeAreasRelationExample" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from crm_base.t_bs_college_areas_relation
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from crm_base.t_bs_college_areas_relation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from crm_base.t_bs_college_areas_relation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.mysqldemo.bean.TBsCollegeAreasRelationExample">
+    <!--@mbg.generated-->
+    delete from crm_base.t_bs_college_areas_relation
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.mysqldemo.bean.TBsCollegeAreasRelation" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into crm_base.t_bs_college_areas_relation (identity_guid, `name`, bs_college_areas_id, 
+      bs_college_areas_name, is_deleted, created_at, 
+      updated_at)
+    values (#{identityGuid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{bsCollegeAreasId,jdbcType=INTEGER}, 
+      #{bsCollegeAreasName,jdbcType=VARCHAR}, #{isDeleted,jdbcType=BOOLEAN}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.mysqldemo.bean.TBsCollegeAreasRelation" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into crm_base.t_bs_college_areas_relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="identityGuid != null">
+        identity_guid,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="bsCollegeAreasId != null">
+        bs_college_areas_id,
+      </if>
+      <if test="bsCollegeAreasName != null">
+        bs_college_areas_name,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="identityGuid != null">
+        #{identityGuid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="bsCollegeAreasId != null">
+        #{bsCollegeAreasId,jdbcType=INTEGER},
+      </if>
+      <if test="bsCollegeAreasName != null">
+        #{bsCollegeAreasName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BOOLEAN},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.mysqldemo.bean.TBsCollegeAreasRelationExample" resultType="java.lang.Long">
+    <!--@mbg.generated-->
+    select count(*) from crm_base.t_bs_college_areas_relation
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--@mbg.generated-->
+    update crm_base.t_bs_college_areas_relation
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.identityGuid != null">
+        identity_guid = #{record.identityGuid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null">
+        `name` = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bsCollegeAreasId != null">
+        bs_college_areas_id = #{record.bsCollegeAreasId,jdbcType=INTEGER},
+      </if>
+      <if test="record.bsCollegeAreasName != null">
+        bs_college_areas_name = #{record.bsCollegeAreasName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDeleted != null">
+        is_deleted = #{record.isDeleted,jdbcType=BOOLEAN},
+      </if>
+      <if test="record.createdAt != null">
+        created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedAt != null">
+        updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--@mbg.generated-->
+    update crm_base.t_bs_college_areas_relation
+    set id = #{record.id,jdbcType=INTEGER},
+      identity_guid = #{record.identityGuid,jdbcType=VARCHAR},
+      `name` = #{record.name,jdbcType=VARCHAR},
+      bs_college_areas_id = #{record.bsCollegeAreasId,jdbcType=INTEGER},
+      bs_college_areas_name = #{record.bsCollegeAreasName,jdbcType=VARCHAR},
+      is_deleted = #{record.isDeleted,jdbcType=BOOLEAN},
+      created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{record.updatedAt,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.mysqldemo.bean.TBsCollegeAreasRelation">
+    <!--@mbg.generated-->
+    update crm_base.t_bs_college_areas_relation
+    <set>
+      <if test="identityGuid != null">
+        identity_guid = #{identityGuid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="bsCollegeAreasId != null">
+        bs_college_areas_id = #{bsCollegeAreasId,jdbcType=INTEGER},
+      </if>
+      <if test="bsCollegeAreasName != null">
+        bs_college_areas_name = #{bsCollegeAreasName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BOOLEAN},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.mysqldemo.bean.TBsCollegeAreasRelation">
+    <!--@mbg.generated-->
+    update crm_base.t_bs_college_areas_relation
+    set identity_guid = #{identityGuid,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      bs_college_areas_id = #{bsCollegeAreasId,jdbcType=INTEGER},
+      bs_college_areas_name = #{bsCollegeAreasName,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=BOOLEAN},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update crm_base.t_bs_college_areas_relation
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="identity_guid = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.identityGuid,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`name` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.name,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="bs_college_areas_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.bsCollegeAreasId,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="bs_college_areas_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.bsCollegeAreasName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="is_deleted = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.isDeleted,jdbcType=BOOLEAN}
+        </foreach>
+      </trim>
+      <trim prefix="created_at = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.createdAt,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="updated_at = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.updatedAt,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update crm_base.t_bs_college_areas_relation
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="identity_guid = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.identityGuid != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.identityGuid,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`name` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.name != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.name,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="bs_college_areas_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.bsCollegeAreasId != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.bsCollegeAreasId,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="bs_college_areas_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.bsCollegeAreasName != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.bsCollegeAreasName,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="is_deleted = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.isDeleted != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.isDeleted,jdbcType=BOOLEAN}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_at = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createdAt != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.createdAt,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_at = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updatedAt != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.updatedAt,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into crm_base.t_bs_college_areas_relation
+    (id, identity_guid, `name`, bs_college_areas_id, bs_college_areas_name, is_deleted, created_at,
+      updated_at)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=INTEGER}, #{item.identityGuid,jdbcType=VARCHAR}, #{item.name,jdbcType=VARCHAR}, #{item.bsCollegeAreasId,jdbcType=INTEGER},
+        #{item.bsCollegeAreasName,jdbcType=VARCHAR}, #{item.isDeleted,jdbcType=BOOLEAN}, 
+        #{item.createdAt,jdbcType=TIMESTAMP}, #{item.updatedAt,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.example.mysqldemo.bean.TBsCollegeAreasRelation" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into crm_base.t_bs_college_areas_relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      identity_guid,
+      `name`,
+      bs_college_areas_id,
+      bs_college_areas_name,
+      is_deleted,
+      created_at,
+      updated_at,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      #{identityGuid,jdbcType=VARCHAR},
+      #{name,jdbcType=VARCHAR},
+      #{bsCollegeAreasId,jdbcType=INTEGER},
+      #{bsCollegeAreasName,jdbcType=VARCHAR},
+      #{isDeleted,jdbcType=BOOLEAN},
+      #{createdAt,jdbcType=TIMESTAMP},
+      #{updatedAt,jdbcType=TIMESTAMP},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      identity_guid = #{identityGuid,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      bs_college_areas_id = #{bsCollegeAreasId,jdbcType=INTEGER},
+      bs_college_areas_name = #{bsCollegeAreasName,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=BOOLEAN},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.example.mysqldemo.bean.TBsCollegeAreasRelation" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into crm_base.t_bs_college_areas_relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="identityGuid != null">
+        identity_guid,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="bsCollegeAreasId != null">
+        bs_college_areas_id,
+      </if>
+      <if test="bsCollegeAreasName != null">
+        bs_college_areas_name,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="identityGuid != null">
+        #{identityGuid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="bsCollegeAreasId != null">
+        #{bsCollegeAreasId,jdbcType=INTEGER},
+      </if>
+      <if test="bsCollegeAreasName != null">
+        #{bsCollegeAreasName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BOOLEAN},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="identityGuid != null">
+        identity_guid = #{identityGuid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="bsCollegeAreasId != null">
+        bs_college_areas_id = #{bsCollegeAreasId,jdbcType=INTEGER},
+      </if>
+      <if test="bsCollegeAreasName != null">
+        bs_college_areas_name = #{bsCollegeAreasName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BOOLEAN},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

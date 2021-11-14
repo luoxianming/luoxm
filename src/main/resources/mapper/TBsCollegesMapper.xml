@@ -1,0 +1,1316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mysqldemo.dao.TBsCollegesMapper">
+  <resultMap id="BaseResultMap" type="com.example.mysqldemo.bean.TBsColleges">
+    <!--@mbg.generated-->
+    <!--@Table crm_base.t_bs_colleges-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="en_name" jdbcType="VARCHAR" property="enName" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="country_id" jdbcType="INTEGER" property="countryId" />
+    <result column="state_id" jdbcType="INTEGER" property="stateId" />
+    <result column="city_id" jdbcType="INTEGER" property="cityId" />
+    <result column="area_id" jdbcType="INTEGER" property="areaId" />
+    <result column="nature" jdbcType="INTEGER" property="nature" />
+    <result column="college_type" jdbcType="INTEGER" property="collegeType" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="f211" jdbcType="TINYINT" property="f211" />
+    <result column="f985" jdbcType="TINYINT" property="f985" />
+    <result column="dual_class" jdbcType="INTEGER" property="dualClass" />
+    <result column="department" jdbcType="TINYINT" property="department" />
+    <result column="central" jdbcType="TINYINT" property="central" />
+    <result column="admissions" jdbcType="TINYINT" property="admissions" />
+    <result column="belong" jdbcType="VARCHAR" property="belong" />
+    <result column="homepage" jdbcType="VARCHAR" property="homepage" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="logo" jdbcType="VARCHAR" property="logo" />
+    <result column="identify" jdbcType="TINYINT" property="identify" />
+    <result column="state" jdbcType="TINYINT" property="state" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+    <result column="source_type" jdbcType="TINYINT" property="sourceType" />
+    <result column="school_type" jdbcType="CHAR" property="schoolType" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, en_name, code, country_id, state_id, city_id, area_id, nature, college_type, 
+    `level`, f211, f985, dual_class, department, central, admissions, belong, homepage, 
+    address, logo, identify, `state`, is_delete, created_at, updated_at, source_type, 
+    school_type
+  </sql>
+  <select id="selectByExample" parameterType="com.example.mysqldemo.bean.TBsCollegesExample" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from crm_base.t_bs_colleges
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from crm_base.t_bs_colleges
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from crm_base.t_bs_colleges
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.mysqldemo.bean.TBsCollegesExample">
+    <!--@mbg.generated-->
+    delete from crm_base.t_bs_colleges
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.mysqldemo.bean.TBsColleges" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into crm_base.t_bs_colleges (`name`, en_name, code, 
+      country_id, state_id, city_id, 
+      area_id, nature, college_type, 
+      `level`, f211, f985, 
+      dual_class, department, central, 
+      admissions, belong, homepage, 
+      address, logo, identify, 
+      `state`, is_delete, created_at, 
+      updated_at, source_type, school_type
+      )
+    values (#{name,jdbcType=VARCHAR}, #{enName,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{countryId,jdbcType=INTEGER}, #{stateId,jdbcType=INTEGER}, #{cityId,jdbcType=INTEGER}, 
+      #{areaId,jdbcType=INTEGER}, #{nature,jdbcType=INTEGER}, #{collegeType,jdbcType=INTEGER}, 
+      #{level,jdbcType=INTEGER}, #{f211,jdbcType=TINYINT}, #{f985,jdbcType=TINYINT}, 
+      #{dualClass,jdbcType=INTEGER}, #{department,jdbcType=TINYINT}, #{central,jdbcType=TINYINT}, 
+      #{admissions,jdbcType=TINYINT}, #{belong,jdbcType=VARCHAR}, #{homepage,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, #{identify,jdbcType=TINYINT}, 
+      #{state,jdbcType=TINYINT}, #{isDelete,jdbcType=TINYINT}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedAt,jdbcType=TIMESTAMP}, #{sourceType,jdbcType=TINYINT}, #{schoolType,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.mysqldemo.bean.TBsColleges" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into crm_base.t_bs_colleges
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="enName != null">
+        en_name,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="countryId != null">
+        country_id,
+      </if>
+      <if test="stateId != null">
+        state_id,
+      </if>
+      <if test="cityId != null">
+        city_id,
+      </if>
+      <if test="areaId != null">
+        area_id,
+      </if>
+      <if test="nature != null">
+        nature,
+      </if>
+      <if test="collegeType != null">
+        college_type,
+      </if>
+      <if test="level != null">
+        `level`,
+      </if>
+      <if test="f211 != null">
+        f211,
+      </if>
+      <if test="f985 != null">
+        f985,
+      </if>
+      <if test="dualClass != null">
+        dual_class,
+      </if>
+      <if test="department != null">
+        department,
+      </if>
+      <if test="central != null">
+        central,
+      </if>
+      <if test="admissions != null">
+        admissions,
+      </if>
+      <if test="belong != null">
+        belong,
+      </if>
+      <if test="homepage != null">
+        homepage,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="logo != null">
+        logo,
+      </if>
+      <if test="identify != null">
+        identify,
+      </if>
+      <if test="state != null">
+        `state`,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+      <if test="sourceType != null">
+        source_type,
+      </if>
+      <if test="schoolType != null">
+        school_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="enName != null">
+        #{enName,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="countryId != null">
+        #{countryId,jdbcType=INTEGER},
+      </if>
+      <if test="stateId != null">
+        #{stateId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="nature != null">
+        #{nature,jdbcType=INTEGER},
+      </if>
+      <if test="collegeType != null">
+        #{collegeType,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="f211 != null">
+        #{f211,jdbcType=TINYINT},
+      </if>
+      <if test="f985 != null">
+        #{f985,jdbcType=TINYINT},
+      </if>
+      <if test="dualClass != null">
+        #{dualClass,jdbcType=INTEGER},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=TINYINT},
+      </if>
+      <if test="central != null">
+        #{central,jdbcType=TINYINT},
+      </if>
+      <if test="admissions != null">
+        #{admissions,jdbcType=TINYINT},
+      </if>
+      <if test="belong != null">
+        #{belong,jdbcType=VARCHAR},
+      </if>
+      <if test="homepage != null">
+        #{homepage,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null">
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="identify != null">
+        #{identify,jdbcType=TINYINT},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=TINYINT},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sourceType != null">
+        #{sourceType,jdbcType=TINYINT},
+      </if>
+      <if test="schoolType != null">
+        #{schoolType,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.mysqldemo.bean.TBsCollegesExample" resultType="java.lang.Long">
+    <!--@mbg.generated-->
+    select count(*) from crm_base.t_bs_colleges
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--@mbg.generated-->
+    update crm_base.t_bs_colleges
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        `name` = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enName != null">
+        en_name = #{record.enName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.code != null">
+        code = #{record.code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.countryId != null">
+        country_id = #{record.countryId,jdbcType=INTEGER},
+      </if>
+      <if test="record.stateId != null">
+        state_id = #{record.stateId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cityId != null">
+        city_id = #{record.cityId,jdbcType=INTEGER},
+      </if>
+      <if test="record.areaId != null">
+        area_id = #{record.areaId,jdbcType=INTEGER},
+      </if>
+      <if test="record.nature != null">
+        nature = #{record.nature,jdbcType=INTEGER},
+      </if>
+      <if test="record.collegeType != null">
+        college_type = #{record.collegeType,jdbcType=INTEGER},
+      </if>
+      <if test="record.level != null">
+        `level` = #{record.level,jdbcType=INTEGER},
+      </if>
+      <if test="record.f211 != null">
+        f211 = #{record.f211,jdbcType=TINYINT},
+      </if>
+      <if test="record.f985 != null">
+        f985 = #{record.f985,jdbcType=TINYINT},
+      </if>
+      <if test="record.dualClass != null">
+        dual_class = #{record.dualClass,jdbcType=INTEGER},
+      </if>
+      <if test="record.department != null">
+        department = #{record.department,jdbcType=TINYINT},
+      </if>
+      <if test="record.central != null">
+        central = #{record.central,jdbcType=TINYINT},
+      </if>
+      <if test="record.admissions != null">
+        admissions = #{record.admissions,jdbcType=TINYINT},
+      </if>
+      <if test="record.belong != null">
+        belong = #{record.belong,jdbcType=VARCHAR},
+      </if>
+      <if test="record.homepage != null">
+        homepage = #{record.homepage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logo != null">
+        logo = #{record.logo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.identify != null">
+        identify = #{record.identify,jdbcType=TINYINT},
+      </if>
+      <if test="record.state != null">
+        `state` = #{record.state,jdbcType=TINYINT},
+      </if>
+      <if test="record.isDelete != null">
+        is_delete = #{record.isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="record.createdAt != null">
+        created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedAt != null">
+        updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sourceType != null">
+        source_type = #{record.sourceType,jdbcType=TINYINT},
+      </if>
+      <if test="record.schoolType != null">
+        school_type = #{record.schoolType,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--@mbg.generated-->
+    update crm_base.t_bs_colleges
+    set id = #{record.id,jdbcType=INTEGER},
+      `name` = #{record.name,jdbcType=VARCHAR},
+      en_name = #{record.enName,jdbcType=VARCHAR},
+      code = #{record.code,jdbcType=VARCHAR},
+      country_id = #{record.countryId,jdbcType=INTEGER},
+      state_id = #{record.stateId,jdbcType=INTEGER},
+      city_id = #{record.cityId,jdbcType=INTEGER},
+      area_id = #{record.areaId,jdbcType=INTEGER},
+      nature = #{record.nature,jdbcType=INTEGER},
+      college_type = #{record.collegeType,jdbcType=INTEGER},
+      `level` = #{record.level,jdbcType=INTEGER},
+      f211 = #{record.f211,jdbcType=TINYINT},
+      f985 = #{record.f985,jdbcType=TINYINT},
+      dual_class = #{record.dualClass,jdbcType=INTEGER},
+      department = #{record.department,jdbcType=TINYINT},
+      central = #{record.central,jdbcType=TINYINT},
+      admissions = #{record.admissions,jdbcType=TINYINT},
+      belong = #{record.belong,jdbcType=VARCHAR},
+      homepage = #{record.homepage,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      logo = #{record.logo,jdbcType=VARCHAR},
+      identify = #{record.identify,jdbcType=TINYINT},
+      `state` = #{record.state,jdbcType=TINYINT},
+      is_delete = #{record.isDelete,jdbcType=TINYINT},
+      created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
+      source_type = #{record.sourceType,jdbcType=TINYINT},
+      school_type = #{record.schoolType,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.mysqldemo.bean.TBsColleges">
+    <!--@mbg.generated-->
+    update crm_base.t_bs_colleges
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="enName != null">
+        en_name = #{enName,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="countryId != null">
+        country_id = #{countryId,jdbcType=INTEGER},
+      </if>
+      <if test="stateId != null">
+        state_id = #{stateId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="nature != null">
+        nature = #{nature,jdbcType=INTEGER},
+      </if>
+      <if test="collegeType != null">
+        college_type = #{collegeType,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        `level` = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="f211 != null">
+        f211 = #{f211,jdbcType=TINYINT},
+      </if>
+      <if test="f985 != null">
+        f985 = #{f985,jdbcType=TINYINT},
+      </if>
+      <if test="dualClass != null">
+        dual_class = #{dualClass,jdbcType=INTEGER},
+      </if>
+      <if test="department != null">
+        department = #{department,jdbcType=TINYINT},
+      </if>
+      <if test="central != null">
+        central = #{central,jdbcType=TINYINT},
+      </if>
+      <if test="admissions != null">
+        admissions = #{admissions,jdbcType=TINYINT},
+      </if>
+      <if test="belong != null">
+        belong = #{belong,jdbcType=VARCHAR},
+      </if>
+      <if test="homepage != null">
+        homepage = #{homepage,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null">
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="identify != null">
+        identify = #{identify,jdbcType=TINYINT},
+      </if>
+      <if test="state != null">
+        `state` = #{state,jdbcType=TINYINT},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sourceType != null">
+        source_type = #{sourceType,jdbcType=TINYINT},
+      </if>
+      <if test="schoolType != null">
+        school_type = #{schoolType,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.mysqldemo.bean.TBsColleges">
+    <!--@mbg.generated-->
+    update crm_base.t_bs_colleges
+    set `name` = #{name,jdbcType=VARCHAR},
+      en_name = #{enName,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      country_id = #{countryId,jdbcType=INTEGER},
+      state_id = #{stateId,jdbcType=INTEGER},
+      city_id = #{cityId,jdbcType=INTEGER},
+      area_id = #{areaId,jdbcType=INTEGER},
+      nature = #{nature,jdbcType=INTEGER},
+      college_type = #{collegeType,jdbcType=INTEGER},
+      `level` = #{level,jdbcType=INTEGER},
+      f211 = #{f211,jdbcType=TINYINT},
+      f985 = #{f985,jdbcType=TINYINT},
+      dual_class = #{dualClass,jdbcType=INTEGER},
+      department = #{department,jdbcType=TINYINT},
+      central = #{central,jdbcType=TINYINT},
+      admissions = #{admissions,jdbcType=TINYINT},
+      belong = #{belong,jdbcType=VARCHAR},
+      homepage = #{homepage,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      identify = #{identify,jdbcType=TINYINT},
+      `state` = #{state,jdbcType=TINYINT},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      source_type = #{sourceType,jdbcType=TINYINT},
+      school_type = #{schoolType,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update crm_base.t_bs_colleges
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="`name` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.name,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="en_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.enName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.code,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="country_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.countryId,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="state_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.stateId,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="city_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.cityId,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="area_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.areaId,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="nature = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.nature,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="college_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.collegeType,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="`level` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.level,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="f211 = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.f211,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="f985 = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.f985,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="dual_class = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.dualClass,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="department = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.department,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="central = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.central,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="admissions = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.admissions,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="belong = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.belong,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="homepage = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.homepage,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="address = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.address,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="logo = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.logo,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="identify = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.identify,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="`state` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.state,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="is_delete = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.isDelete,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="created_at = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.createdAt,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="updated_at = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.updatedAt,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="source_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.sourceType,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="school_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.schoolType,jdbcType=CHAR}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update crm_base.t_bs_colleges
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="`name` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.name != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.name,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="en_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.enName != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.enName,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.code != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.code,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="country_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.countryId != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.countryId,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="state_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.stateId != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.stateId,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="city_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.cityId != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.cityId,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="area_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.areaId != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.areaId,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="nature = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.nature != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.nature,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="college_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.collegeType != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.collegeType,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`level` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.level != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.level,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="f211 = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.f211 != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.f211,jdbcType=TINYINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="f985 = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.f985 != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.f985,jdbcType=TINYINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="dual_class = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.dualClass != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.dualClass,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="department = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.department != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.department,jdbcType=TINYINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="central = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.central != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.central,jdbcType=TINYINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="admissions = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.admissions != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.admissions,jdbcType=TINYINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="belong = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.belong != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.belong,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="homepage = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.homepage != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.homepage,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="address = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.address != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.address,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="logo = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.logo != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.logo,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="identify = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.identify != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.identify,jdbcType=TINYINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`state` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.state != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.state,jdbcType=TINYINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="is_delete = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.isDelete != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.isDelete,jdbcType=TINYINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_at = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createdAt != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.createdAt,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_at = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updatedAt != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.updatedAt,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="source_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.sourceType != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.sourceType,jdbcType=TINYINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="school_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.schoolType != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.schoolType,jdbcType=CHAR}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into crm_base.t_bs_colleges
+    (`name`, en_name, code, country_id, state_id, city_id, area_id, nature, college_type, 
+      `level`, f211, f985, dual_class, department, central, admissions, belong, homepage, 
+      address, logo, identify, `state`, is_delete, created_at, updated_at, source_type, 
+      school_type)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.name,jdbcType=VARCHAR}, #{item.enName,jdbcType=VARCHAR}, #{item.code,jdbcType=VARCHAR}, 
+        #{item.countryId,jdbcType=INTEGER}, #{item.stateId,jdbcType=INTEGER}, #{item.cityId,jdbcType=INTEGER}, 
+        #{item.areaId,jdbcType=INTEGER}, #{item.nature,jdbcType=INTEGER}, #{item.collegeType,jdbcType=INTEGER}, 
+        #{item.level,jdbcType=INTEGER}, #{item.f211,jdbcType=TINYINT}, #{item.f985,jdbcType=TINYINT}, 
+        #{item.dualClass,jdbcType=INTEGER}, #{item.department,jdbcType=TINYINT}, #{item.central,jdbcType=TINYINT}, 
+        #{item.admissions,jdbcType=TINYINT}, #{item.belong,jdbcType=VARCHAR}, #{item.homepage,jdbcType=VARCHAR}, 
+        #{item.address,jdbcType=VARCHAR}, #{item.logo,jdbcType=VARCHAR}, #{item.identify,jdbcType=TINYINT}, 
+        #{item.state,jdbcType=TINYINT}, #{item.isDelete,jdbcType=TINYINT}, #{item.createdAt,jdbcType=TIMESTAMP}, 
+        #{item.updatedAt,jdbcType=TIMESTAMP}, #{item.sourceType,jdbcType=TINYINT}, #{item.schoolType,jdbcType=CHAR}
+        )
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.example.mysqldemo.bean.TBsColleges" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into crm_base.t_bs_colleges
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      `name`,
+      en_name,
+      code,
+      country_id,
+      state_id,
+      city_id,
+      area_id,
+      nature,
+      college_type,
+      `level`,
+      f211,
+      f985,
+      dual_class,
+      department,
+      central,
+      admissions,
+      belong,
+      homepage,
+      address,
+      logo,
+      identify,
+      `state`,
+      is_delete,
+      created_at,
+      updated_at,
+      source_type,
+      school_type,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      #{name,jdbcType=VARCHAR},
+      #{enName,jdbcType=VARCHAR},
+      #{code,jdbcType=VARCHAR},
+      #{countryId,jdbcType=INTEGER},
+      #{stateId,jdbcType=INTEGER},
+      #{cityId,jdbcType=INTEGER},
+      #{areaId,jdbcType=INTEGER},
+      #{nature,jdbcType=INTEGER},
+      #{collegeType,jdbcType=INTEGER},
+      #{level,jdbcType=INTEGER},
+      #{f211,jdbcType=TINYINT},
+      #{f985,jdbcType=TINYINT},
+      #{dualClass,jdbcType=INTEGER},
+      #{department,jdbcType=TINYINT},
+      #{central,jdbcType=TINYINT},
+      #{admissions,jdbcType=TINYINT},
+      #{belong,jdbcType=VARCHAR},
+      #{homepage,jdbcType=VARCHAR},
+      #{address,jdbcType=VARCHAR},
+      #{logo,jdbcType=VARCHAR},
+      #{identify,jdbcType=TINYINT},
+      #{state,jdbcType=TINYINT},
+      #{isDelete,jdbcType=TINYINT},
+      #{createdAt,jdbcType=TIMESTAMP},
+      #{updatedAt,jdbcType=TIMESTAMP},
+      #{sourceType,jdbcType=TINYINT},
+      #{schoolType,jdbcType=CHAR},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      `name` = #{name,jdbcType=VARCHAR},
+      en_name = #{enName,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      country_id = #{countryId,jdbcType=INTEGER},
+      state_id = #{stateId,jdbcType=INTEGER},
+      city_id = #{cityId,jdbcType=INTEGER},
+      area_id = #{areaId,jdbcType=INTEGER},
+      nature = #{nature,jdbcType=INTEGER},
+      college_type = #{collegeType,jdbcType=INTEGER},
+      `level` = #{level,jdbcType=INTEGER},
+      f211 = #{f211,jdbcType=TINYINT},
+      f985 = #{f985,jdbcType=TINYINT},
+      dual_class = #{dualClass,jdbcType=INTEGER},
+      department = #{department,jdbcType=TINYINT},
+      central = #{central,jdbcType=TINYINT},
+      admissions = #{admissions,jdbcType=TINYINT},
+      belong = #{belong,jdbcType=VARCHAR},
+      homepage = #{homepage,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      identify = #{identify,jdbcType=TINYINT},
+      `state` = #{state,jdbcType=TINYINT},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      source_type = #{sourceType,jdbcType=TINYINT},
+      school_type = #{schoolType,jdbcType=CHAR},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.example.mysqldemo.bean.TBsColleges" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into crm_base.t_bs_colleges
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="enName != null">
+        en_name,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="countryId != null">
+        country_id,
+      </if>
+      <if test="stateId != null">
+        state_id,
+      </if>
+      <if test="cityId != null">
+        city_id,
+      </if>
+      <if test="areaId != null">
+        area_id,
+      </if>
+      <if test="nature != null">
+        nature,
+      </if>
+      <if test="collegeType != null">
+        college_type,
+      </if>
+      <if test="level != null">
+        `level`,
+      </if>
+      <if test="f211 != null">
+        f211,
+      </if>
+      <if test="f985 != null">
+        f985,
+      </if>
+      <if test="dualClass != null">
+        dual_class,
+      </if>
+      <if test="department != null">
+        department,
+      </if>
+      <if test="central != null">
+        central,
+      </if>
+      <if test="admissions != null">
+        admissions,
+      </if>
+      <if test="belong != null">
+        belong,
+      </if>
+      <if test="homepage != null">
+        homepage,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="logo != null">
+        logo,
+      </if>
+      <if test="identify != null">
+        identify,
+      </if>
+      <if test="state != null">
+        `state`,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+      <if test="sourceType != null">
+        source_type,
+      </if>
+      <if test="schoolType != null">
+        school_type,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="enName != null">
+        #{enName,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="countryId != null">
+        #{countryId,jdbcType=INTEGER},
+      </if>
+      <if test="stateId != null">
+        #{stateId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="nature != null">
+        #{nature,jdbcType=INTEGER},
+      </if>
+      <if test="collegeType != null">
+        #{collegeType,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="f211 != null">
+        #{f211,jdbcType=TINYINT},
+      </if>
+      <if test="f985 != null">
+        #{f985,jdbcType=TINYINT},
+      </if>
+      <if test="dualClass != null">
+        #{dualClass,jdbcType=INTEGER},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=TINYINT},
+      </if>
+      <if test="central != null">
+        #{central,jdbcType=TINYINT},
+      </if>
+      <if test="admissions != null">
+        #{admissions,jdbcType=TINYINT},
+      </if>
+      <if test="belong != null">
+        #{belong,jdbcType=VARCHAR},
+      </if>
+      <if test="homepage != null">
+        #{homepage,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null">
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="identify != null">
+        #{identify,jdbcType=TINYINT},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=TINYINT},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sourceType != null">
+        #{sourceType,jdbcType=TINYINT},
+      </if>
+      <if test="schoolType != null">
+        #{schoolType,jdbcType=CHAR},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="enName != null">
+        en_name = #{enName,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="countryId != null">
+        country_id = #{countryId,jdbcType=INTEGER},
+      </if>
+      <if test="stateId != null">
+        state_id = #{stateId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="nature != null">
+        nature = #{nature,jdbcType=INTEGER},
+      </if>
+      <if test="collegeType != null">
+        college_type = #{collegeType,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        `level` = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="f211 != null">
+        f211 = #{f211,jdbcType=TINYINT},
+      </if>
+      <if test="f985 != null">
+        f985 = #{f985,jdbcType=TINYINT},
+      </if>
+      <if test="dualClass != null">
+        dual_class = #{dualClass,jdbcType=INTEGER},
+      </if>
+      <if test="department != null">
+        department = #{department,jdbcType=TINYINT},
+      </if>
+      <if test="central != null">
+        central = #{central,jdbcType=TINYINT},
+      </if>
+      <if test="admissions != null">
+        admissions = #{admissions,jdbcType=TINYINT},
+      </if>
+      <if test="belong != null">
+        belong = #{belong,jdbcType=VARCHAR},
+      </if>
+      <if test="homepage != null">
+        homepage = #{homepage,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null">
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="identify != null">
+        identify = #{identify,jdbcType=TINYINT},
+      </if>
+      <if test="state != null">
+        `state` = #{state,jdbcType=TINYINT},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sourceType != null">
+        source_type = #{sourceType,jdbcType=TINYINT},
+      </if>
+      <if test="schoolType != null">
+        school_type = #{schoolType,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
